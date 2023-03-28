@@ -34,7 +34,7 @@ namespace Moreno.RPA_AeC.UnityTests.Domain.Services
             retorno.Should().BeEquivalentTo(pesquisa);
             _pesquisaRepository
                 .Verify(p => p.AdicionarAsync(It.Is<Pesquisa>(
-                    x => x.DataPesquisa == pesquisa.DataPesquisa && 
+                    x => x.DataCadastro == pesquisa.DataCadastro && 
                          x.Id == pesquisa.Id && 
                          x.Termo == pesquisa.Termo)), Times.Once);
         }
@@ -52,7 +52,7 @@ namespace Moreno.RPA_AeC.UnityTests.Domain.Services
             retorno.Should().BeEquivalentTo(pesquisa);
             _pesquisaRepository
                 .Verify(p => p.AtualizarAsync(It.Is<Pesquisa>(
-                    x => x.DataPesquisa == pesquisa.DataPesquisa &&
+                    x => x.DataCadastro == pesquisa.DataCadastro &&
                          x.Id == pesquisa.Id &&
                          x.Termo == pesquisa.Termo)), Times.Once);
         }

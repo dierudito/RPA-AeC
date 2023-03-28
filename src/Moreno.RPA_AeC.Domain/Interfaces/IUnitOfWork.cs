@@ -2,8 +2,6 @@
 
 public interface IUnitOfWork
 {
-    Task CommitAsync();
-    Task BeginTransactionAsync();
-    Task RollbackAsync();
-    Task<bool> SaveChangesAsync();
+    int Commit();
+    Task<int> CommitAsync();
 }

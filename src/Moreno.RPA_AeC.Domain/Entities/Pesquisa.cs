@@ -3,7 +3,7 @@
 public class Pesquisa : Entity
 {
     public string Termo { get; private set; }
-    public DateTime DataPesquisa { get; private set; }
+    public DateTime DataCadastro { get; private set; }
     public virtual ICollection<ResultadoPesquisa> ResultadoPesquisas { get; private set; }
     public virtual ICollection<LogPesquisa> LogsPesquisa { get; private set; }
 
@@ -15,7 +15,7 @@ public class Pesquisa : Entity
     public Pesquisa(string termo)
     {
         Termo = termo;
-        DataPesquisa = new DateTime();
+        DataCadastro = new DateTime();
         ResultadoPesquisas = new List<ResultadoPesquisa>();
         LogsPesquisa = new List<LogPesquisa>();
     }

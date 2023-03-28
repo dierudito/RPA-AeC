@@ -4,7 +4,7 @@ public class LogPesquisa : Entity
 {
     public Guid PesquisaId { get; private set; }
     public string Descricao { get; private set; }
-    public DateTime DataLog { get; private set; }
+    public DateTime DataCadastro { get; private set; }
 
     // Necessário para navegação do EF
     public virtual Pesquisa Pesquisa { get; private set; }
@@ -18,6 +18,6 @@ public class LogPesquisa : Entity
     {
         PesquisaId = pesquisaId;
         Descricao = descricao;
-        DataLog = DateTime.Now;
+        DataCadastro = DateTime.Now;
     }
 }
