@@ -1,0 +1,47 @@
+﻿using Moreno.RPA_AeC.Domain.Value_Objects;
+
+namespace Moreno.RPA_AeC.Domain.Entities;
+
+public class ResultadoPesquisa : Entity
+{
+    public Guid PesquisaId { get; private set; }
+    public string Titulo { get; private set; }
+    public string Area { get; private set; }
+    public string Autor { get; private set; }
+    public string Descricao { get; private set; }
+    public DateTime? DataPublicacao { get; private set; }
+
+    // Necessário para navegação do EF
+    public virtual Pesquisa Pesquisa { get; private set; }
+
+    public ResultadoPesquisa()
+    {
+
+    }
+
+    public ResultadoPesquisa(Guid pesquisaId)
+    {
+        PesquisaId = pesquisaId;
+    }
+
+    public void DefinirTitulo(string titulo)
+    {
+        Titulo = titulo;
+    }
+    public void DefinirArea(string area)
+    {
+        Area = area;
+    }
+    public void DefinirAutor(string autor)
+    {
+        Autor = autor;
+    }
+    public void DefinirDescricao(string descricao)
+    {
+        Descricao = descricao;
+    }
+    public void DefinirDataPublicacao(string dataPublicacao)
+    {
+        DataPublicacao = dataPublicacao.ConverterStringParaData();
+    }
+}
