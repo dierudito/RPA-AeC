@@ -6,9 +6,6 @@ using Moreno.RPA_AeC.Infra.Data.Repository;
 using Moreno.RPA_AeC.Infra.Data.UoW;
 using Moreno.RPA_AeC.Infra.Rpa.Interfaces;
 using Moreno.RPA_AeC.Infra.Rpa.WebControls;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
 
 namespace Moreno.RPA_AeC.Infra.CrossCutting.IoC.Configurations;
 
@@ -19,7 +16,6 @@ public static class DependencyInjectionConfig
     {
         return services
                 .AddApplicationBase()
-                .AddAutoMapper()
                 .AddRepositories()
                 .AddServices();
     }
