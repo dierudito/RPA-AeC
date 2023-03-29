@@ -26,7 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Moreno.RPA_AeC.Application\Moreno.RPA_AeC.Application.csproj" />
     <ProjectReference Include="..\..\src\Moreno.RPA_AeC.Domain\Moreno.RPA_AeC.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Moreno.RPA_AeC.Infra.Rpa\Moreno.RPA_AeC.Infra.Rpa.csproj" />
+    <ProjectReference Include="..\..\src\Moreno.RPA_AeC.WebApi.Bff\Moreno.RPA_AeC.WebApi.Bff.csproj" />
   </ItemGroup>
 
 </Project>
