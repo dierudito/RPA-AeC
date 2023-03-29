@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Moreno.RPA_AeC.Application.AppService;
+using Moreno.RPA_AeC.Application.Interfaces;
 using Moreno.RPA_AeC.Domain.Interfaces;
 using Moreno.RPA_AeC.Domain.Services;
 using Moreno.RPA_AeC.Infra.Data.Context.Entity;
@@ -15,9 +17,16 @@ public static class DependencyInjectionConfig
     public static IServiceCollection ResolveDependencies(this IServiceCollection services)
     {
         return services
+                .AddApplicationService()
                 .AddApplicationBase()
                 .AddRepositories()
-                .AddServices();
+                .AddServices()
+                .AddRpa();
+    }
+
+    private static IServiceCollection AddApplicationService(this IServiceCollection services)
+    {
+        return services.AddTransient<IPesquisaAppService, PesquisaAppService>();
     }
 
     private static IServiceCollection AddApplicationBase(this IServiceCollection services)

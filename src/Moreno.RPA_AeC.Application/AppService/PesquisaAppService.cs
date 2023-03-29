@@ -43,7 +43,14 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
         EscreverLogsDaPesquisa(pesquisa);
         pesquisa = await _pesquisaService.AdicionarAsync(pesquisa).ConfigureAwait(false);
 
-        if((await CommitAsync()) == 0)
+        try
+        {
+            if ((await CommitAsync()) == 0)
+            {
+                AdicionarErrosValidacao(_valdationResult, "", "Ocorreu um erro no momento de salvar os dados no banco.");
+            }
+        }
+        catch (Exception)
         {
             AdicionarErrosValidacao(_valdationResult, "", "Ocorreu um erro no momento de salvar os dados no banco.");
         }
@@ -232,7 +239,7 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
         int terminoAutor;
         if (dadosPublicacao.Contains(marcaSeparacaoAutorData))
         {
-            inicioDaData = dadosPublicacao.IndexOf(marcaSeparacaoAutorData);
+            inicioDaData = dadosPublicacao.IndexOf(marcaSeparacaoAutorData) + marcaSeparacaoAutorData.Length;
             terminoAutor = inicioDaData - marcaSeparacaoAutorData.Length;
         }
         else if (dadosPublicacao.Contains('/'))
@@ -249,14 +256,14 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
         data = dadosPublicacao[inicioDaData..];
 
         int inicioAutor;
-        if (dadosPublicacao.Contains(marcaInicioAutor)) inicioAutor = dadosPublicacao.IndexOf(marcaInicioAutor);
+        if (dadosPublicacao.Contains(marcaInicioAutor)) inicioAutor = dadosPublicacao.IndexOf(marcaInicioAutor) + marcaInicioAutor.Length;
         else
         {
             AdicionarErrosValidacao(_valdationResult, "Seprar Dados da Publicacao", $"Nao foi possivel separar o autor dos dados da publicacao {dadosPublicacao}");
             return (autor, data);
         }
 
-        autor = dadosPublicacao.Substring(inicioAutor, terminoAutor);
+        autor = dadosPublicacao.Substring(inicioAutor, terminoAutor- inicioAutor);
         return (autor, data);
     }
 

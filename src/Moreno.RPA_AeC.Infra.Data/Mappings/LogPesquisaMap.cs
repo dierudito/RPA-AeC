@@ -9,7 +9,7 @@ public class LogPesquisaMap : IEntityTypeConfiguration<LogPesquisa>
 {
     public void Configure(EntityTypeBuilder<LogPesquisa> builder)
     {
-        builder.ToTable("Pesquisas_Logs").HasKey(logPesquisa => logPesquisa.Id);
+        builder.ToTable("Pesquisas_Logs");
 
         builder.Property(logPesquisa => logPesquisa.Descricao).HasColumnName("varchar").HasMaxLength(500).IsRequired();
         builder.Property(logPesquisa => logPesquisa.DataCadastro).IsRequired();

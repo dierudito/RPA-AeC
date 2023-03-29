@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Moreno.RPA_AeC.Application\Moreno.RPA_AeC.Application.csproj" />
     <ProjectReference Include="..\Moreno.RPA_AeC.Domain\Moreno.RPA_AeC.Domain.csproj" />
     <ProjectReference Include="..\Moreno.RPA_AeC.Infra.Data\Moreno.RPA_AeC.Infra.Data.csproj" />
     <ProjectReference Include="..\Moreno.RPA_AeC.Infra.Rpa\Moreno.RPA_AeC.Infra.Rpa.csproj" />

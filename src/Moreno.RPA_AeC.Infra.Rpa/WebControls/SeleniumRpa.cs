@@ -12,7 +12,7 @@ public class SeleniumRpa : ISeleniumRpa
 {
     private readonly IWebDriver _driver;
 
-    public SeleniumRpa(IWebDriver driver)
+    public SeleniumRpa()
     {
         _driver = new ChromeDriver();
     }

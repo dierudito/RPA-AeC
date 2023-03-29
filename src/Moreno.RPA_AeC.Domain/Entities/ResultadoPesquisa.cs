@@ -1,5 +1,4 @@
 ﻿using Moreno.RPA_AeC.Domain.Value_Objects;
-using System.ComponentModel.DataAnnotations;
 
 namespace Moreno.RPA_AeC.Domain.Entities;
 
