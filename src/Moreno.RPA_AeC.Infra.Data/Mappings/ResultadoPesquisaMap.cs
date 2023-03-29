@@ -15,6 +15,8 @@ public class ResultadoPesquisaMap : IEntityTypeConfiguration<ResultadoPesquisa>
         builder.Property(resultadoPesquisa => resultadoPesquisa.Titulo).HasColumnName("varchar").HasMaxLength(100);
         builder.Property(resultadoPesquisa => resultadoPesquisa.Area).HasColumnName("varchar").HasMaxLength(100);
         builder.Property(resultadoPesquisa => resultadoPesquisa.Autor).HasColumnName("varchar").HasMaxLength(100);
+        builder.Property(resultadoPesquisa => resultadoPesquisa.CapturadoTotalmente).IsRequired();
+        builder.Property(resultadoPesquisa => resultadoPesquisa.AoMenosUmCapturado).IsRequired();
 
         builder.HasOne(resultadoPesquisa => resultadoPesquisa.Pesquisa)
             .WithMany(pesquisa => pesquisa.ResultadoPesquisas)
