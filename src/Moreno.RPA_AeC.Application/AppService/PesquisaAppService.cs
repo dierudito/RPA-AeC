@@ -1,4 +1,5 @@
 ﻿using DomainValidationCore.Validation;
+using Microsoft.Extensions.Logging;
 using Moreno.RPA_AeC.Application.AppService.Base;
 using Moreno.RPA_AeC.Application.Interfaces;
 using Moreno.RPA_AeC.Application.ViewModels;
@@ -7,6 +8,7 @@ using Moreno.RPA_AeC.Domain.Interfaces;
 using Moreno.RPA_AeC.Infra.Rpa.Base;
 using Moreno.RPA_AeC.Infra.Rpa.Interfaces;
 using OpenQA.Selenium;
+using System.Text.Json;
 
 namespace Moreno.RPA_AeC.Application.AppService;
 
@@ -17,7 +19,9 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
     private readonly ISeleniumRpa _seleniumRpa;
     private ValidationResult _valdationResult;
 
-    public PesquisaAppService(IPesquisaService pesquisaService, IUnitOfWork uow, ISeleniumRpa seleniumRpa) : base(uow)
+    public PesquisaAppService(
+        IPesquisaService pesquisaService, IUnitOfWork uow, 
+        ISeleniumRpa seleniumRpa, ILogger<PesquisaAppService> logger) : base(uow, logger)
     {
         _pesquisaService = pesquisaService;
         _seleniumRpa = seleniumRpa;
@@ -25,6 +29,7 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
 
     public async Task<RelatorioPesquisaViewModel> PesquisarTermoAsync(string termo)
     {
+        _logger.LogInformation($"Pesquisa do termo {termo}");
         var relatorio = new RelatorioPesquisaViewModel { TermoPesquisado = termo };
         _valdationResult = relatorio.ValidationResult;
 
@@ -52,8 +57,11 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
         }
         catch (Exception e)
         {
-            AdicionarErrosValidacao(_valdationResult, "", "Ocorreu um erro no momento de salvar os dados no banco.");
+            AdicionarErrosValidacao(_valdationResult, "", "Ocorreu um erro no momento de salvar os dados no banco.", e);
         }
+
+        var jsonRelatorio = JsonSerializer.Serialize(relatorio);
+        _logger.LogInformation(jsonRelatorio);
         relatorio.ValidationResult = _valdationResult;
         return relatorio;
     }
@@ -115,7 +123,7 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
         catch (Exception e)
         {
             AdicionarErrosValidacao(_valdationResult, "Obter Dados Do Site",
-                $"Ocorreu um erro inesperado ao obter os dados do site {ObterDetalhesDaException(e)}");
+                $"Ocorreu um erro inesperado ao obter os dados do site", e);
             return pesquisa;
         }
     }
@@ -155,7 +163,7 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
         catch (Exception e)
         {
             AdicionarErrosValidacao(_valdationResult, "Obter Conteudo Do Resultado Da Pesquisa",
-                $"Ocorreu um erro inesperado ao obter o conteudo do resultado {index} da pesquisa do site {ObterDetalhesDaException(e)}");
+                $"Ocorreu um erro inesperado ao obter o conteudo do resultado {index} da pesquisa do site", e);
             return (string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
         }
     }
@@ -172,7 +180,7 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
         catch (Exception e)
         {
             AdicionarErrosValidacao(_valdationResult, "Obter Titulo",
-                $"Erro ao obter titulo {ObterDetalhesDaException(e)}");
+                $"Erro ao obter titulo", e);
             return string.Empty;
         }
     }
@@ -189,7 +197,7 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
         catch (Exception e)
         {
             AdicionarErrosValidacao(_valdationResult, "Obter Area",
-                $"Erro ao obter area {ObterDetalhesDaException(e)}");
+                $"Erro ao obter area", e);
             return string.Empty;
         }
     }
@@ -206,7 +214,7 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
         catch (Exception e)
         {
             AdicionarErrosValidacao(_valdationResult, "Obter Descricao",
-                $"Erro ao obter descricao {ObterDetalhesDaException(e)}");
+                $"Erro ao obter descricao",e);
             return string.Empty;
         }
     }
@@ -223,7 +231,7 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
         catch (Exception e)
         {
             AdicionarErrosValidacao(_valdationResult, "Obter Dados da Publicação",
-                $"Erro ao obter dados da publicação autor/data {ObterDetalhesDaException(e)}");
+                $"Erro ao obter dados da publicação autor/data", e);
             return string.Empty;
         }
     }

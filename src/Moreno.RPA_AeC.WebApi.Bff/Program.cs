@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Moreno.RPA_AeC.Infra.CrossCutting.IoC.Configurations;
 using Moreno.RPA_AeC.Infra.Data.Context.Entity;
+using log4net.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.ResolveDependencies();
 builder.Services.AddDbContext<RPA_AeCDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+builder.Logging.AddLog4Net();
+XmlConfigurator.Configure(new FileInfo("log4net.config"));
 
 var app = builder.Build();
 
