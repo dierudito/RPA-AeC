@@ -8,10 +8,12 @@ namespace Moreno.RPA_AeC.WebApi.Bff.Controllers
     public class RpaController : ControllerBase
     {
         private readonly IPesquisaAppService _pesquisaAppService;
+        private readonly ILogger<RpaController> _logger;
 
-        public RpaController(IPesquisaAppService pesquisaAppService)
+        public RpaController(IPesquisaAppService pesquisaAppService, ILogger<RpaController> logger)
         {
             _pesquisaAppService = pesquisaAppService;
+            _logger = logger;
         }
 
         [HttpPost("/pesquisar/{termo}")]

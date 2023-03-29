@@ -1,10 +1,14 @@
 ﻿using DomainValidationCore.Validation;
+using Moreno.RPA_AeC.Infra.CrossCutting.Filters.Extensions;
+using Newtonsoft.Json;
 
 namespace Moreno.RPA_AeC.Application.ViewModels
 {
     public class RelatorioPesquisaViewModel
     {
+        [JsonConverter(typeof(DateFormatConverter), "dd/MM/yyyy HH:mm:ss")]
         public DateTime DataInicio { get; private set; }
+        [JsonConverter(typeof(DateFormatConverter), "dd/MM/yyyy HH:mm:ss")]
         public DateTime DataTermino { get; set; }
         public string TermoPesquisado { get; set; }
         public int QuantidadeRegistrosEncontrados { get; set; }
