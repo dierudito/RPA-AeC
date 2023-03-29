@@ -11,10 +11,10 @@ public class ResultadoPesquisaMap : IEntityTypeConfiguration<ResultadoPesquisa>
     {
         builder.ToTable("Pesquisas_Resultados");
 
-        //builder.Property(resultadoPesquisa => resultadoPesquisa.Descricao).HasColumnName("varchar").HasMaxLength(1000);
-        //builder.Property(resultadoPesquisa => resultadoPesquisa.Titulo).HasColumnName("varchar").HasMaxLength(100);
-        //builder.Property(resultadoPesquisa => resultadoPesquisa.Area).HasColumnName("varchar").HasMaxLength(100);
-        //builder.Property(resultadoPesquisa => resultadoPesquisa.Autor).HasColumnName("varchar").HasMaxLength(100);
+        builder.Property(resultadoPesquisa => resultadoPesquisa.Descricao).HasColumnType("varchar").HasMaxLength(1000);
+        builder.Property(resultadoPesquisa => resultadoPesquisa.Titulo).HasColumnType("varchar").HasMaxLength(100);
+        builder.Property(resultadoPesquisa => resultadoPesquisa.Area).HasColumnType("varchar").HasMaxLength(100);
+        builder.Property(resultadoPesquisa => resultadoPesquisa.Autor).HasColumnType("varchar").HasMaxLength(100);
         builder.Property(resultadoPesquisa => resultadoPesquisa.CapturadoTotalmente).IsRequired();
         builder.Property(resultadoPesquisa => resultadoPesquisa.AoMenosUmCapturado).IsRequired();
 

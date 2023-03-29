@@ -23,8 +23,6 @@ public class RPA_AeCDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Domain.Entities.Entity>().HasKey(entity => entity.Id);
-
         modelBuilder.ApplyConfiguration(new PesquisaMap());
         modelBuilder.ApplyConfiguration(new ResultadoPesquisaMap());
         modelBuilder.ApplyConfiguration(new LogPesquisaMap());

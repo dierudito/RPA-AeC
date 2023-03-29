@@ -11,7 +11,7 @@ public class LogPesquisaMap : IEntityTypeConfiguration<LogPesquisa>
     {
         builder.ToTable("Pesquisas_Logs");
 
-        builder.Property(logPesquisa => logPesquisa.Descricao).HasColumnName("varchar").HasMaxLength(500).IsRequired();
+        builder.Property(logPesquisa => logPesquisa.Descricao).HasColumnType("varchar").HasMaxLength(500).IsRequired();
         builder.Property(logPesquisa => logPesquisa.DataCadastro).IsRequired();
 
         builder.HasOne(logPesquisa => logPesquisa.Pesquisa)

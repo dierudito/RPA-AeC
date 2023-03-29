@@ -11,7 +11,7 @@ public class PesquisaMap : IEntityTypeConfiguration<Pesquisa>
     {
         builder.ToTable("Pesquisas");
 
-        builder.Property(pesquisa => pesquisa.Termo).HasColumnName("varchar").HasMaxLength(100).IsRequired();
+        builder.Property(pesquisa => pesquisa.Termo).HasColumnType("varchar").HasMaxLength(100).IsRequired();
         builder.Property(pesquisa => pesquisa.DataCadastro).IsRequired();
     }
 }

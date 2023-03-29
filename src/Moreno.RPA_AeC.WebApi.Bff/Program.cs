@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ResolveDependencies();
 builder.Services.AddDbContext<RPA_AeCDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefalutConnection"))
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
 var app = builder.Build();
