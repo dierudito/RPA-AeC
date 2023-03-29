@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="12.0.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Moreno.RPA_AeC.Application\Moreno.RPA_AeC.Application.csproj" />
     <ProjectReference Include="..\Moreno.RPA_AeC.Domain\Moreno.RPA_AeC.Domain.csproj" />
     <ProjectReference Include="..\Moreno.RPA_AeC.Infra.Data\Moreno.RPA_AeC.Infra.Data.csproj" />
