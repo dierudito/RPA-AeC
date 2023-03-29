@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Moreno.RPA_AeC.Domain.Entities;
 using Moreno.RPA_AeC.Infra.Data.Mappings;
 
@@ -40,5 +41,14 @@ public class RPA_AeCDbContext : DbContext
                 entry.Property("DataCadastro").IsModified = false;
         }
         return base.SaveChangesAsync(cancellationToken);
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("server=DESKTOP-K0541N1\\SQLEXPRESS; database=RpaAecDb;Trusted_Connection=SSPI;Encrypt=false;TrustServerCertificate=true");
+        }
+        base.OnConfiguring(optionsBuilder);
     }
 }
