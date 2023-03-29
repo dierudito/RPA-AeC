@@ -32,10 +32,10 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
         relatorio.DataTermino = DateTime.Now;
 
         relatorio.QuantidadeRegistrosEncontrados = pesquisa.ResultadoPesquisas.Count;
-        relatorio.QuantidadeRegistrosNaoGravados = 
+        relatorio.QuantidadeRegistrosNaoGravados =
             pesquisa.ResultadoPesquisas.Count(resultado => !resultado.AoMenosUmCapturado);
-        relatorio.QuantidadeRegistrosGravadosComRessalvas = 
-            pesquisa.ResultadoPesquisas.Count(resultado => resultado.AoMenosUmCapturado && 
+        relatorio.QuantidadeRegistrosGravadosComRessalvas =
+            pesquisa.ResultadoPesquisas.Count(resultado => resultado.AoMenosUmCapturado &&
                                                           !resultado.CapturadoTotalmente);
         relatorio.QuantidadeRegistrosGravadosComSucesso =
             pesquisa.ResultadoPesquisas.Count(resultado => resultado.CapturadoTotalmente);
@@ -72,9 +72,9 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
             const string chaveFormPesquisa = "form";
             const string chaveElementoRetornoPesquisa = "/html/body/main/div[2]/div/strong/div[1]/div/div/div/a";
             await _seleniumRpa.NavegarParaUrl(ENDERECO_SITE);
-            var valorAtribuito = await _seleniumRpa.AtribuirValor(TipoElementoEnum.Name, chaveInputPesquisa, termo, 0);
+            var valorAtribuido = await _seleniumRpa.AtribuirValor(TipoElementoEnum.Name, chaveInputPesquisa, termo, 0);
 
-            if (!valorAtribuito)
+            if (!valorAtribuido)
             {
                 AdicionarErrosValidacao(_valdationResult, "Atribuir valor", "Erro ao setar o termo da pesquisa no site alvo!");
                 return pesquisa;
@@ -91,18 +91,19 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
             var elementoQueRetornaOsDadosDaPesquisa =
                 await _seleniumRpa.ObterListaDeElementos(TipoElementoEnum.XPath, chaveElementoRetornoPesquisa);
 
-            foreach (var item in elementoQueRetornaOsDadosDaPesquisa.Select((value, i) => new { i, value }))
-            {
-                var resultado = await ObterConteudoDoResultadoDaPesquisa(item.value, item.i);
-                var resultadoPesquisa = new ResultadoPesquisa(pesquisa.Id);
-                resultadoPesquisa.DefinirAutor(resultado.autor);
-                resultadoPesquisa.DefinirTitulo(resultado.titulo);
-                resultadoPesquisa.DefinirDescricao(resultado.descricao);
-                resultadoPesquisa.DefinirArea(resultado.area);
-                resultadoPesquisa.DefinirDataPublicacao(resultado.data);
-                ValidarDadosDaEntidadeResultadoPesquisa(resultadoPesquisa);
-                pesquisa.AdicionarResultadoPesquisa(resultadoPesquisa);
-            }
+            if (elementoQueRetornaOsDadosDaPesquisa != null)
+                foreach (var item in elementoQueRetornaOsDadosDaPesquisa.Select((value, i) => new { i, value }))
+                {
+                    var resultado = await ObterConteudoDoResultadoDaPesquisa(item.value, item.i);
+                    var resultadoPesquisa = new ResultadoPesquisa(pesquisa.Id);
+                    resultadoPesquisa.DefinirAutor(resultado.autor);
+                    resultadoPesquisa.DefinirTitulo(resultado.titulo);
+                    resultadoPesquisa.DefinirDescricao(resultado.descricao);
+                    resultadoPesquisa.DefinirArea(resultado.area);
+                    resultadoPesquisa.DefinirDataPublicacao(resultado.data);
+                    ValidarDadosDaEntidadeResultadoPesquisa(resultadoPesquisa);
+                    pesquisa.AdicionarResultadoPesquisa(resultadoPesquisa);
+                }
 
             if (elementoQueRetornaOsDadosDaPesquisa == null)
             {
@@ -138,7 +139,7 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
             AdicionarErrosValidacao(_valdationResult, "Titulo", $"Titulo definido como vazio para a pesquisa {resultadoPesquisa.PesquisaId}");
     }
 
-    private async Task<(string titulo, string area, string descricao, string autor, string data)> 
+    private async Task<(string titulo, string area, string descricao, string autor, string data)>
         ObterConteudoDoResultadoDaPesquisa(IWebElement webElement, int index)
     {
         try
@@ -263,7 +264,7 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
             return (autor, data);
         }
 
-        autor = dadosPublicacao.Substring(inicioAutor, terminoAutor- inicioAutor);
+        autor = dadosPublicacao.Substring(inicioAutor, terminoAutor - inicioAutor);
         return (autor, data);
     }
 
