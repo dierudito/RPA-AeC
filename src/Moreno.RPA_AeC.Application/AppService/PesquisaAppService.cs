@@ -50,7 +50,7 @@ public class PesquisaAppService : BaseAppService, IPesquisaAppService
                 AdicionarErrosValidacao(_valdationResult, "", "Ocorreu um erro no momento de salvar os dados no banco.");
             }
         }
-        catch (Exception)
+        catch (Exception e)
         {
             AdicionarErrosValidacao(_valdationResult, "", "Ocorreu um erro no momento de salvar os dados no banco.");
         }
