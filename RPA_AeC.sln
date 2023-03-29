@@ -17,21 +17,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{7203D461-0EDD-491C-ABF8-E2C1F6033FF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moreno.RPA_AeC.Domain", "src\Moreno.RPA_AeC.Domain\Moreno.RPA_AeC.Domain.csproj", "{0DB95792-D2E0-4AB4-B2D1-38793CF188FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moreno.RPA_AeC.Domain", "src\Moreno.RPA_AeC.Domain\Moreno.RPA_AeC.Domain.csproj", "{0DB95792-D2E0-4AB4-B2D1-38793CF188FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moreno.RPA_AeC.Infra.Data", "src\Moreno.RPA_AeC.Infra.Data\Moreno.RPA_AeC.Infra.Data.csproj", "{3A12D27E-0D80-4548-902E-4A7BD8958303}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moreno.RPA_AeC.Infra.Data", "src\Moreno.RPA_AeC.Infra.Data\Moreno.RPA_AeC.Infra.Data.csproj", "{3A12D27E-0D80-4548-902E-4A7BD8958303}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moreno.RPA_AeC.Infra.CrossCutting.IoC", "src\Moreno.RPA_AeC.Infra.CrossCutting.IoC\Moreno.RPA_AeC.Infra.CrossCutting.IoC.csproj", "{A749717B-5C8C-4957-A00B-C3B483A300F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moreno.RPA_AeC.Infra.CrossCutting.IoC", "src\Moreno.RPA_AeC.Infra.CrossCutting.IoC\Moreno.RPA_AeC.Infra.CrossCutting.IoC.csproj", "{A749717B-5C8C-4957-A00B-C3B483A300F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moreno.RPA_AeC.UnityTests", "tests\Moreno.RPA_AeC.UnityTests\Moreno.RPA_AeC.UnityTests.csproj", "{B04E6F9D-0C5F-44E5-9982-E3F957C38CC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moreno.RPA_AeC.UnityTests", "tests\Moreno.RPA_AeC.UnityTests\Moreno.RPA_AeC.UnityTests.csproj", "{B04E6F9D-0C5F-44E5-9982-E3F957C38CC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moreno.RPA_AeC.Application", "src\Moreno.RPA_AeC.Application\Moreno.RPA_AeC.Application.csproj", "{E86410D5-CFD0-4DC6-8040-1B4EF259EC3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moreno.RPA_AeC.Application", "src\Moreno.RPA_AeC.Application\Moreno.RPA_AeC.Application.csproj", "{E86410D5-CFD0-4DC6-8040-1B4EF259EC3C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3 - Rpa", "4.3 - Rpa", "{819FA728-B99F-4610-AB55-D69AC86A7FC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moreno.RPA_AeC.Infra.Rpa", "src\Moreno.RPA_AeC.Infra.Rpa\Moreno.RPA_AeC.Infra.Rpa.csproj", "{2DB8FEAF-FBC2-4A80-AA40-FB58037DC7E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moreno.RPA_AeC.Infra.Rpa", "src\Moreno.RPA_AeC.Infra.Rpa\Moreno.RPA_AeC.Infra.Rpa.csproj", "{2DB8FEAF-FBC2-4A80-AA40-FB58037DC7E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moreno.RPA_AeC.WebApi.Bff", "src\Moreno.RPA_AeC.WebApi.Bff\Moreno.RPA_AeC.WebApi.Bff.csproj", "{A8CF37D1-3333-4DAE-9D91-B2A62203BF4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moreno.RPA_AeC.WebApi.Bff", "src\Moreno.RPA_AeC.WebApi.Bff\Moreno.RPA_AeC.WebApi.Bff.csproj", "{A8CF37D1-3333-4DAE-9D91-B2A62203BF4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moreno.RPA_AeC.Infra.CrossCutting.Filters", "src\Moreno.RPA_AeC.Infra.CrossCutting.Filters\Moreno.RPA_AeC.Infra.CrossCutting.Filters.csproj", "{4E259875-CB8B-4CE1-8EE3-3B7D018DE357}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{A8CF37D1-3333-4DAE-9D91-B2A62203BF4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8CF37D1-3333-4DAE-9D91-B2A62203BF4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8CF37D1-3333-4DAE-9D91-B2A62203BF4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E259875-CB8B-4CE1-8EE3-3B7D018DE357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E259875-CB8B-4CE1-8EE3-3B7D018DE357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E259875-CB8B-4CE1-8EE3-3B7D018DE357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E259875-CB8B-4CE1-8EE3-3B7D018DE357}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{819FA728-B99F-4610-AB55-D69AC86A7FC7} = {62F8F6B9-FBF9-4294-8033-F929B6131DEA}
 		{2DB8FEAF-FBC2-4A80-AA40-FB58037DC7E2} = {819FA728-B99F-4610-AB55-D69AC86A7FC7}
 		{A8CF37D1-3333-4DAE-9D91-B2A62203BF4C} = {4D51A6BA-3596-4D7B-8EF7-2376CA63950D}
+		{4E259875-CB8B-4CE1-8EE3-3B7D018DE357} = {7203D461-0EDD-491C-ABF8-E2C1F6033FF6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C17135B-8487-4C8E-AB96-58F56BEAF77C}
